@@ -24,16 +24,16 @@ Create table #tmpAdRecord
 
 select '544' UserAccessControl, 
 	case when Department='Student' then 
-		'OU='+baseYear+',OU=Students,DC=JPC,DC=LOCAL' 
-	when Department='All Staff' then
-	'OU=Teachers,OU=Staff,DC=JPC,DC=LOCAL'
+		'OU='+baseYear+',OU=Students,DC=YourDC,DC=LOCAL' 
+	when Department='Department Name' then
+	'OU=YourOU1,OU=YourOU2,DC=YourDC,DC=LOCAL'
 	else 
-		'OU=testOU,DC=JPC,DC=LOCAL' 
+		'OU=testOU,DC=YourDC,DC=LOCAL' 
 	end 
 	as
 	ldapPath
 
 
-, *,'@jpc.vic.edu.au' as UNPDomainName,1 as pwdLastSet from  #tmpAdRecord 
--- Students with Year Level change to remove and update the group
+, *,'@YourMaildomain.com' as UNPDomainName,1 as pwdLastSet from  #tmpAdRecord 
+
 drop table #tmpAdRecord
